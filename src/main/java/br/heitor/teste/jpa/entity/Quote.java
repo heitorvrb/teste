@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 /**
  *

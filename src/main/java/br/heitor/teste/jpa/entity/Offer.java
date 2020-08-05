@@ -24,12 +24,7 @@ public class Offer implements Serializable {
     private Long id;
     @Embedded
     @AssociationOverride(name = "fees",
-            joinTable = @JoinTable(
-                    name = "offer_fees",
-                    inverseJoinColumns = @JoinColumn(name = "fee_id", referencedColumnName = "id"),
-                    joinColumns = @JoinColumn(name = "offer_id", referencedColumnName = "id")
-            )
-    )
+            joinTable = @JoinTable(name = "offer_fees"))
     private Quote quote;
 
     public Long getId() {

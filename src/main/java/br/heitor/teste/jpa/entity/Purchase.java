@@ -27,12 +27,7 @@ public class Purchase implements Serializable {
     private Offer offer;
     @Embedded
     @AssociationOverride(name = "fees",
-            joinTable = @JoinTable(
-                    name = "purchase_fees",
-                    inverseJoinColumns = @JoinColumn(name = "fee_id", referencedColumnName = "id"),
-                    joinColumns = @JoinColumn(name = "purchase_id", referencedColumnName = "id")
-            )
-    )
+            joinTable = @JoinTable(name = "purchase_fees"))
     private Quote quote;
 
     public Long getId() {

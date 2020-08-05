@@ -1,12 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Página Page</title>
         <meta charset="utf-8"/>
     </h:head>
     <h:body>
-        <h:outputText value="#{teste.texto()}" />
+        <ui:repeat var="p" value="#{teste.purchases}">
+            <h:outputText value="#{p.quote.price}" />
+        </ui:repeat>
     </h:body>
 </html>

@@ -21,14 +21,13 @@ public class Fee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
+    @Column(precision = 8, scale = 4)
+    private BigDecimal rate;
 
     public Long getId() {
         return id;
     }
-
-    @NotNull
-    @Column(precision = 8, scale = 4)
-    private BigDecimal rate;
 
     public BigDecimal getRate() {
         return rate;
