@@ -28,7 +28,7 @@ public class TesteBean {
     public List<Purchase> getPurchases() {
         if (purchases == null) {
             Offer offer = offerDao.getOffer(1L);
-            purchases = purchaseDao.getPurchases(offer);
+            purchases = purchaseDao.getPurchases(offer.getQuote().getPrice());
         }
         return purchases;
     }

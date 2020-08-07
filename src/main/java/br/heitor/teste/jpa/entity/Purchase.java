@@ -21,13 +21,18 @@ public class Purchase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Offer offer;
     @Embedded
     @AssociationOverride(name = "fees",
-            joinTable = @JoinTable(name = "purchase_fees"))
+            joinTable = @JoinTable(
+                    name = "purchase_fees",
+                    inverseJoinColumns = @JoinColumn(name = "fee_id", referencedColumnName = "id"),
+                    joinColumns = @JoinColumn(name = "purchase_id", referencedColumnName = "id")
+            )
+    )
     private Quote quote;
 
     public Long getId() {
