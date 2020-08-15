@@ -18,10 +18,10 @@ import javax.persistence.JoinTable;
 @Entity
 public class Offer implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Embedded
     @AssociationOverride(name = "fees",
             joinTable = @JoinTable(
