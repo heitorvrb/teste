@@ -3,7 +3,6 @@ package br.heitor.teste.jpa.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.AssociationOverride;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,21 +18,19 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Purchase implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
-    private Offer offer;
-    @Embedded
-    @AssociationOverride(name = "fees",
+    @AssociationOverride(name = "quote.fees",
             joinTable = @JoinTable(
                     name = "purchase_fees",
                     inverseJoinColumns = @JoinColumn(name = "fee_id", referencedColumnName = "id"),
                     joinColumns = @JoinColumn(name = "purchase_id", referencedColumnName = "id")
             )
     )
-    private Quote quote;
+    private Offer offer;
 
     public Long getId() {
         return id;
@@ -45,14 +42,6 @@ public class Purchase implements Serializable {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
-    }
-
-    public Quote getQuote() {
-        return quote;
-    }
-
-    public void setQuote(Quote quote) {
-        this.quote = quote;
     }
 
     @Override
